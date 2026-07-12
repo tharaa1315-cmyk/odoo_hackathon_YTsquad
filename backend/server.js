@@ -24,6 +24,12 @@ app.use("/api/vendors", require("./routes/vendorRoutes"));
 app.use("/api/locations", require("./routes/locationRoutes"));
 app.use("/api/employees", require("./routes/employeeRoutes"));
 app.use("/api/upload", require("./routes/uploadRoutes"));
+app.use("/api/transfers", require("./routes/transferRoutes"));
+app.use("/api/bookings", require("./routes/bookingRoutes"));
+app.use("/api/maintenance", require("./routes/maintenanceRoutes"));
+app.use("/api/audits", require("./routes/auditRoutes"));
+app.use("/api/notifications", require("./routes/notificationRoutes"));
+app.use("/api/analytics", require("./routes/analyticsRoutes"));
 
 app.use(notFound);
 app.use(errorHandler);

@@ -23,6 +23,12 @@ import DepartmentsPage from "@/pages/admin/DepartmentsPage";
 import VendorsPage from "@/pages/admin/VendorsPage";
 import LocationsPage from "@/pages/admin/LocationsPage";
 import EmployeesPage from "@/pages/admin/EmployeesPage";
+import MaintenanceList from "@/pages/maintenance/MaintenanceList";
+import TransferList from "@/pages/transfers/TransferList";
+import BookingList from "@/pages/bookings/BookingList";
+import AuditList from "@/pages/audits/AuditList";
+import AnalyticsDashboard from "@/pages/analytics/AnalyticsDashboard";
+import NotificationList from "@/pages/notifications/NotificationList";
 
 import { dashboardPathForRole } from "@/utils/roleDashboard";
 
@@ -57,14 +63,15 @@ const App = () => {
               <Route path="/admin/vendors" element={<VendorsPage />} />
               <Route path="/admin/locations" element={<LocationsPage />} />
               <Route path="/admin/inventory" element={<PlaceholderPage title="Inventory" />} />
-              <Route path="/admin/maintenance" element={<PlaceholderPage title="Maintenance" />} />
-              <Route path="/admin/allocation" element={<PlaceholderPage title="Asset Allocation" />} />
-              <Route path="/admin/transfers" element={<PlaceholderPage title="Asset Transfers" />} />
+              <Route path="/admin/maintenance" element={<MaintenanceList />} />
+              <Route path="/admin/allocation" element={<TransferList />} />
+              <Route path="/admin/transfers" element={<TransferList />} />
+              <Route path="/admin/bookings" element={<BookingList />} />
               <Route path="/admin/returns" element={<PlaceholderPage title="Asset Returns" />} />
               <Route path="/admin/consumables" element={<PlaceholderPage title="Consumables" />} />
-              <Route path="/admin/reports" element={<PlaceholderPage title="Reports" />} />
-              <Route path="/admin/analytics" element={<PlaceholderPage title="Analytics" />} />
-              <Route path="/admin/notifications" element={<PlaceholderPage title="Notifications" />} />
+              <Route path="/admin/reports" element={<AuditList />} />
+              <Route path="/admin/analytics" element={<AnalyticsDashboard />} />
+              <Route path="/admin/notifications" element={<NotificationList />} />
               <Route path="/admin/settings" element={<PlaceholderPage title="Settings" />} />
             </Route>
           </Route>
@@ -74,12 +81,13 @@ const App = () => {
             <Route element={<DashboardLayout />}>
               <Route path="/asset-manager/dashboard" element={<AssetManagerDashboard />} />
               <Route path="/asset-manager/assets" element={<AssetList />} />
-              <Route path="/asset-manager/maintenance" element={<PlaceholderPage title="Maintenance" />} />
+              <Route path="/asset-manager/maintenance" element={<MaintenanceList />} />
               <Route path="/asset-manager/inventory" element={<PlaceholderPage title="Inventory" />} />
-              <Route path="/asset-manager/allocation" element={<PlaceholderPage title="Allocation" />} />
-              <Route path="/asset-manager/transfers" element={<PlaceholderPage title="Transfers" />} />
-              <Route path="/asset-manager/reports" element={<PlaceholderPage title="Reports" />} />
-              <Route path="/asset-manager/analytics" element={<PlaceholderPage title="Analytics" />} />
+              <Route path="/asset-manager/allocation" element={<TransferList />} />
+              <Route path="/asset-manager/transfers" element={<TransferList />} />
+              <Route path="/asset-manager/bookings" element={<BookingList />} />
+              <Route path="/asset-manager/reports" element={<AuditList />} />
+              <Route path="/asset-manager/analytics" element={<AnalyticsDashboard />} />
             </Route>
           </Route>
 
@@ -89,9 +97,10 @@ const App = () => {
               <Route path="/manager/dashboard" element={<DepartmentManagerDashboard />} />
               <Route path="/manager/department-assets" element={<PlaceholderPage title="Department Assets" />} />
               <Route path="/manager/employee-assets" element={<PlaceholderPage title="Employee Assets" />} />
-              <Route path="/manager/requests" element={<PlaceholderPage title="Asset Requests" />} />
+              <Route path="/manager/requests" element={<TransferList />} />
+              <Route path="/manager/bookings" element={<BookingList />} />
               <Route path="/manager/approvals" element={<PlaceholderPage title="Approvals" />} />
-              <Route path="/manager/reports" element={<PlaceholderPage title="Reports" />} />
+              <Route path="/manager/reports" element={<AnalyticsDashboard />} />
             </Route>
           </Route>
 
@@ -100,11 +109,12 @@ const App = () => {
             <Route element={<DashboardLayout />}>
               <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
               <Route path="/employee/my-assets" element={<PlaceholderPage title="My Assets" />} />
-              <Route path="/employee/request-asset" element={<PlaceholderPage title="Request Asset" />} />
+              <Route path="/employee/request-asset" element={<TransferList />} />
+              <Route path="/employee/bookings" element={<BookingList />} />
               <Route path="/employee/return-asset" element={<PlaceholderPage title="Return Asset" />} />
               <Route path="/employee/report-damage" element={<PlaceholderPage title="Report Damage" />} />
-              <Route path="/employee/maintenance-requests" element={<PlaceholderPage title="Maintenance Requests" />} />
-              <Route path="/employee/notifications" element={<PlaceholderPage title="Notifications" />} />
+              <Route path="/employee/maintenance-requests" element={<MaintenanceList />} />
+              <Route path="/employee/notifications" element={<NotificationList />} />
               <Route path="/employee/profile" element={<PlaceholderPage title="Profile" />} />
             </Route>
           </Route>

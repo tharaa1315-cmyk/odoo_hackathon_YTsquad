@@ -69,6 +69,7 @@ const assetSchema = new mongoose.Schema(
     history: [historyEntrySchema],
 
     isActive: { type: Boolean, default: true },
+    isShared: { type: Boolean, default: false },
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   { timestamps: true }
