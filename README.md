@@ -19,7 +19,7 @@
 
 <br/>
 
-[![Stars](https://img.shields.io/github/stars/USERNAME/SyncFlow?style=social)](#)
+[![Stars](https://img.shields.io/github/stars/USERNAME/SyncFlow?style=social)](https://github.com/tharaa1315-cmyk/odoo_hackathon_YTsquad)
 [![Forks](https://img.shields.io/github/forks/USERNAME/SyncFlow?style=social)](#)
 [![License](https://img.shields.io/badge/license-MIT-informational)](#)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
