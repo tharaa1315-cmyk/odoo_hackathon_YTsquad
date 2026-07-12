@@ -1,0 +1,454 @@
+# AssetFlow - Enterprise Asset & Resource Management System
+
+## Overview
+
+AssetFlow is an Enterprise Asset & Resource Management System developed for the Odoo Hackathon. The application helps organizations efficiently manage physical assets, shared resources, employee allocations, maintenance workflows, audits, and reports through a centralized ERP platform.
+
+The system replaces manual asset tracking methods such as spreadsheets and paper logs with a structured, secure, and role-based management system.
+
+---
+
+# User Authentication
+
+## Login
+
+Users authenticate using:
+
+- Email
+- Password
+
+After successful authentication, the system verifies the user's role and redirects them to the appropriate dashboard.
+
+## Signup
+
+Only Employee accounts can be created through the signup page.
+
+New users are always registered as Employees.
+
+Only the Admin can promote an Employee to:
+
+- Asset Manager
+- Department Head
+
+Admin accounts are created manually.
+
+---
+
+# System Architecture
+
+```
+AssetFlow
+│
+├── Login / Signup
+│
+├── Authentication
+│
+├── Role Verification
+│
+├── Admin Dashboard
+│
+├── Asset Manager Dashboard
+│
+├── Department Head Dashboard
+│
+└── Employee Dashboard
+```
+
+---
+
+# User Roles
+
+## 1. Admin
+
+### Responsibilities
+
+- Manage Departments
+- Manage Asset Categories
+- Manage Employee Directory
+- Promote Employees to Asset Manager
+- Promote Employees to Department Head
+- Assign Departments
+- Create Audit Cycles
+- View Organization Reports
+- Monitor Notifications
+- Manage Entire System
+
+### Dashboard Modules
+
+```
+Dashboard
+│
+├── Organization Setup
+│     ├── Department Management
+│     ├── Asset Category Management
+│     └── Employee Directory
+│
+├── Audit Management
+├── Reports & Analytics
+├── Notifications
+└── Profile
+```
+
+---
+
+## 2. Asset Manager
+
+### Responsibilities
+
+- Register Assets
+- Update Asset Information
+- Allocate Assets
+- Approve Transfer Requests
+- Approve Maintenance Requests
+- Assign Technicians
+- Approve Asset Returns
+- Maintain Asset History
+- View Reports
+
+### Dashboard Modules
+
+```
+Dashboard
+│
+├── Asset Registration
+├── Asset Directory
+├── Asset Allocation
+├── Transfer Requests
+├── Maintenance Management
+├── Asset Returns
+├── Reports
+├── Notifications
+└── Profile
+```
+
+---
+
+## 3. Department Head
+
+### Responsibilities
+
+- View Department Assets
+- Approve Department Transfer Requests
+- Book Shared Resources
+- Monitor Department Assets
+
+### Dashboard Modules
+
+```
+Dashboard
+│
+├── Department Assets
+├── Transfer Requests
+├── Resource Booking
+├── Notifications
+└── Profile
+```
+
+---
+
+## 4. Employee
+
+### Responsibilities
+
+- View Assigned Assets
+- Book Shared Resources
+- Raise Maintenance Requests
+- Request Asset Transfer
+- Return Assigned Assets
+- View Notifications
+
+### Dashboard Modules
+
+```
+Dashboard
+│
+├── My Assets
+├── Resource Booking
+├── Maintenance Requests
+├── Transfer Requests
+├── Return Asset
+├── Notifications
+└── Profile
+```
+
+---
+
+# Application Modules
+
+## 1. Dashboard
+
+Displays:
+
+- Assets Available
+- Assets Allocated
+- Maintenance Today
+- Active Bookings
+- Pending Transfers
+- Upcoming Returns
+- Overdue Returns
+- Notifications
+
+---
+
+## 2. Organization Setup
+
+### Department Management
+
+- Create Department
+- Edit Department
+- Deactivate Department
+- Assign Department Head
+
+### Asset Category Management
+
+- Create Categories
+- Edit Categories
+- Manage Category Details
+
+### Employee Directory
+
+- View Employees
+- Assign Departments
+- Promote Roles
+- Activate/Deactivate Employees
+
+---
+
+## 3. Asset Registration
+
+Asset Details:
+
+- Asset Name
+- Category
+- Asset Tag
+- Serial Number
+- Acquisition Date
+- Acquisition Cost
+- Condition
+- Location
+- Documents
+- Photos
+- Shared Resource Flag
+
+Asset Status
+
+- Available
+- Allocated
+- Reserved
+- Under Maintenance
+- Lost
+- Retired
+- Disposed
+
+---
+
+## 4. Asset Allocation
+
+Functions
+
+- Allocate Asset
+- Transfer Asset
+- Return Asset
+- Allocation History
+- Conflict Validation
+- Expected Return Date
+
+Transfer Workflow
+
+```
+Transfer Requested
+        ↓
+Manager Approval
+        ↓
+Asset Reallocated
+        ↓
+History Updated
+```
+
+Return Workflow
+
+```
+Employee Returns Asset
+        ↓
+Condition Inspection
+        ↓
+Asset Available
+```
+
+---
+
+## 5. Resource Booking
+
+Shared Resources
+
+- Meeting Rooms
+- Conference Halls
+- Vehicles
+- Projectors
+- Equipment
+
+Features
+
+- Calendar View
+- Time Slot Booking
+- Conflict Detection
+- Booking Reminders
+- Cancel Booking
+- Reschedule Booking
+
+Booking Status
+
+- Upcoming
+- Ongoing
+- Completed
+- Cancelled
+
+---
+
+## 6. Maintenance Management
+
+Workflow
+
+```
+Maintenance Request
+        ↓
+Pending
+        ↓
+Asset Manager Approval
+        ↓
+Technician Assigned
+        ↓
+In Progress
+        ↓
+Resolved
+        ↓
+Asset Available
+```
+
+Features
+
+- Raise Request
+- Upload Photos
+- Priority Selection
+- Technician Assignment
+- Maintenance History
+
+---
+
+## 7. Asset Audit
+
+Workflow
+
+```
+Create Audit Cycle
+        ↓
+Assign Auditor
+        ↓
+Verify Assets
+        ↓
+Generate Discrepancy Report
+        ↓
+Close Audit
+```
+
+Asset Verification
+
+- Verified
+- Missing
+- Damaged
+
+---
+
+## 8. Reports & Analytics
+
+Reports include
+
+- Asset Utilization
+- Idle Assets
+- Department Allocation
+- Maintenance Frequency
+- Resource Booking Statistics
+- Asset Retirement Report
+
+---
+
+## 9. Notifications
+
+Examples
+
+- Asset Assigned
+- Booking Confirmed
+- Booking Reminder
+- Transfer Approved
+- Maintenance Approved
+- Maintenance Rejected
+- Return Reminder
+- Audit Completed
+
+---
+
+# Overall Workflow
+
+```
+Login
+│
+▼
+Authentication
+│
+▼
+Role Verification
+│
+├────────────── Admin
+│               │
+│               ├── Organization Setup
+│               ├── Employee Management
+│               ├── Audit Management
+│               └── Reports
+│
+├────────────── Asset Manager
+│               │
+│               ├── Register Assets
+│               ├── Allocate Assets
+│               ├── Transfer Assets
+│               ├── Maintenance
+│               └── Returns
+│
+├────────────── Department Head
+│               │
+│               ├── Department Assets
+│               ├── Resource Booking
+│               └── Transfer Approval
+│
+└────────────── Employee
+                │
+                ├── View My Assets
+                ├── Book Resources
+                ├── Raise Maintenance
+                ├── Request Transfer
+                └── Return Asset
+```
+
+---
+
+# Technology Stack
+
+Frontend
+- Flutter Web
+
+Backend
+- (To be implemented)
+
+Database
+- (To be implemented)
+
+Authentication
+- Role-Based Authentication
+
+Architecture
+- Modular ERP Architecture
+
+Design
+- Responsive UI
+- Role-Based Access Control
+- Clean Module Separation
+- Scalable Workflow Design
