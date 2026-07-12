@@ -19,7 +19,7 @@ const registerUser = asyncHandler(async (req, res) => {
     name,
     email,
     password,
-    role: role && ["employee", "department_manager"].includes(role) ? role : "employee",
+    role: "user",
     department: department || undefined,
     phone: phone || "",
   });
@@ -62,7 +62,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/auth/me
 // @access  Private
 const getMe = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id).populate("department", "name");
+  const user = await User.findById(req.user._id).populate("department", "name").populate("organization");
   res.json({ success: true, data: user });
 });
 

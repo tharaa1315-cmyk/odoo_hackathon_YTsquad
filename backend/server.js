@@ -17,6 +17,7 @@ if (process.env.NODE_ENV !== "production") app.use(morgan("dev"));
 app.get("/api/health", (req, res) => res.json({ success: true, message: "SyncFlow API is running" }));
 
 app.use("/api/auth", require("./routes/authRoutes"));
+app.use("/api/organizations", require("./routes/orgRoutes"));
 app.use("/api/assets", require("./routes/assetRoutes"));
 app.use("/api/categories", require("./routes/categoryRoutes"));
 app.use("/api/departments", require("./routes/departmentRoutes"));

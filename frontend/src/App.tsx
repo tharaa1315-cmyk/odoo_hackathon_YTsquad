@@ -11,6 +11,10 @@ import NotFound from "@/pages/NotFound";
 import Unauthorized from "@/pages/Unauthorized";
 import PlaceholderPage from "@/pages/PlaceholderPage";
 
+import LandingPage from "@/pages/LandingPage";
+import OrganizationSetup from "@/pages/auth/OrganizationSetup";
+import PendingApproval from "@/pages/auth/PendingApproval";
+
 import AdminDashboard from "@/pages/dashboard/AdminDashboard";
 import AssetManagerDashboard from "@/pages/dashboard/AssetManagerDashboard";
 import DepartmentManagerDashboard from "@/pages/dashboard/DepartmentManagerDashboard";
@@ -32,10 +36,13 @@ import NotificationList from "@/pages/notifications/NotificationList";
 
 import { dashboardPathForRole } from "@/utils/roleDashboard";
 
-const RootRedirect = () => {
+const SmartRedirect = () => {
   const { user, loading } = useAuth();
   if (loading) return null;
-  return <Navigate to={user ? dashboardPathForRole(user.role) : "/login"} replace />;
+  if (!user) return <Navigate to="/login" replace />;
+  if (!user.organization) return <Navigate to="/setup-organization" replace />;
+  if (user.joinStatus === "pending" || user.role === "user") return <Navigate to="/pending-approval" replace />;
+  return <Navigate to={dashboardPathForRole(user.role)} replace />;
 };
 
 const App = () => {
@@ -44,12 +51,14 @@ const App = () => {
       <AuthProvider>
         <Toaster position="top-right" toastOptions={{ style: { fontSize: "14px" } }} />
         <Routes>
-          <Route path="/" element={<RootRedirect />} />
-
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/redirect" element={<SmartRedirect />} />
           {/* Auth */}
           <Route element={<AuthLayout />}>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/setup-organization" element={<OrganizationSetup />} />
+            <Route path="/pending-approval" element={<PendingApproval />} />
           </Route>
 
           {/* Administrator */}

@@ -37,8 +37,8 @@ const AuthLayout = () => {
         <p className="relative text-xs text-primary-100/70">© {new Date().getFullYear()} SyncFlow</p>
       </div>
 
-      <div className="flex items-center justify-center bg-white p-6 dark:bg-surface-dark">
-        <div className="w-full max-w-sm">
+      <div className="flex w-full items-center justify-center bg-white p-6 dark:bg-surface-dark">
+        <div className="w-full max-w-md">
           <Outlet />
         </div>
       </div>

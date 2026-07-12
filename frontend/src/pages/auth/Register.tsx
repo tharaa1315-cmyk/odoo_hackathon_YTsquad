@@ -37,7 +37,7 @@ const RegisterPage = () => {
       });
       const user = await login(values.email, values.password);
       toast.success("Account created");
-      navigate(dashboardPathForRole(user.role), { replace: true });
+      navigate("/redirect", { replace: true });
     } catch (err: any) {
       toast.error(err?.response?.data?.message || "Unable to create account");
     } finally {

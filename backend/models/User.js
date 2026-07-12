@@ -20,8 +20,14 @@ const userSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      enum: ["administrator", "asset_manager", "department_manager", "employee"],
-      default: "employee",
+      enum: ["administrator", "asset_manager", "department_manager", "employee", "user"],
+      default: "user",
+    },
+    organization: { type: mongoose.Schema.Types.ObjectId, ref: "Organization" },
+    joinStatus: {
+      type: String,
+      enum: ["none", "pending", "approved"],
+      default: "none",
     },
     department: { type: mongoose.Schema.Types.ObjectId, ref: "Department" },
     employeeProfile: { type: mongoose.Schema.Types.ObjectId, ref: "Employee" },

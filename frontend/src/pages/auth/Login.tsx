@@ -29,7 +29,7 @@ const LoginPage = () => {
     try {
       const user = await login(values.email, values.password);
       toast.success(`Welcome back, ${user.name.split(" ")[0]}`);
-      navigate(dashboardPathForRole(user.role), { replace: true });
+      navigate("/redirect", { replace: true });
     } catch (err: any) {
       toast.error(err?.response?.data?.message || "Unable to sign in");
     } finally {
@@ -85,10 +85,12 @@ const LoginPage = () => {
         </Link>
       </p>
 
-      <div className="mt-8 rounded-xl bg-slate-50 p-3 text-xs text-slate-500 dark:bg-slate-800">
-        Demo administrator: <strong>admin@syncflow.app</strong> / <strong>Admin@123</strong>
-        <br />
-        (after running <code>npm run seed</code> in the backend)
+      <div className="mt-8 rounded-xl bg-slate-50 p-4 text-xs text-slate-500 space-y-2 border border-slate-200 dark:bg-slate-800 dark:border-slate-700">
+        <strong className="block text-slate-700 dark:text-slate-300">Demo Credentials (passwords match suffix)</strong>
+        <div>Admin: <strong className="text-slate-900 dark:text-slate-100">admin@syncflow.app</strong> / Admin@123</div>
+        <div>Manager: <strong className="text-slate-900 dark:text-slate-100">manager@syncflow.app</strong> / Manager@123</div>
+        <div>Asset Manager: <strong className="text-slate-900 dark:text-slate-100">am@syncflow.app</strong> / Manager@123</div>
+        <div>Employee: <strong className="text-slate-900 dark:text-slate-100">employee@syncflow.app</strong> / Employee@123</div>
       </div>
     </div>
   );

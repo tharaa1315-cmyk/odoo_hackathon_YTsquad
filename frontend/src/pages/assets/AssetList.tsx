@@ -6,7 +6,7 @@ import {
   flexRender,
   createColumnHelper,
 } from "@tanstack/react-table";
-import { Plus, Search, Pencil, Trash2, Archive, Eye, ChevronLeft, ChevronRight } from "lucide-react";
+import { Plus, Search, Pencil, Trash2, Archive, Eye, ChevronLeft, ChevronRight, QrCode } from "lucide-react";
 import toast from "react-hot-toast";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -72,6 +72,16 @@ const AssetList = () => {
     }
   };
 
+  const downloadQR = (asset: Asset) => {
+    if (!asset.qrCode) return toast.error("No QR Code available");
+    const a = document.createElement("a");
+    a.href = asset.qrCode;
+    a.download = `QR_${asset.assetId}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   const columns = useMemo(
     () => [
       columnHelper.accessor("assetId", { header: "Asset ID" }),
@@ -104,9 +114,25 @@ const AssetList = () => {
             <Link
               to={`/assets/${info.row.original._id}`}
               className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-primary-600 dark:hover:bg-slate-800"
+              title="View Details"
             >
               <Eye className="h-4 w-4" />
             </Link>
+            <button
+              onClick={() => {
+                const url = info.row.original.qrCode;
+                if (!url) return toast.error("No QR code found");
+                const w = window.open("", "_blank");
+                if (w) {
+                  w.document.write(`<html><body style="display:flex;flex-direction:column;align-items:center;margin-top:50px;font-family:sans-serif;"><h2>${info.row.original.name}</h2><p>${info.row.original.assetId}</p><img src="${url}" style="width:300px;height:300px;"/><br/><button onclick="window.print()">Print</button><button onclick="window.close()" style="margin-left:10px;">Close</button></body></html>`);
+                  w.document.close();
+                }
+              }}
+              className="rounded-lg p-1.5 text-slate-400 hover:bg-slate-100 hover:text-indigo-600 dark:hover:bg-slate-800"
+              title="Print QR"
+            >
+              <QrCode className="h-4 w-4" />
+            </button>
             <button
               onClick={() => {
                 setEditing(info.row.original);

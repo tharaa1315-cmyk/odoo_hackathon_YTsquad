@@ -12,3 +12,7 @@ export const CardHeader = ({ className, ...props }: HTMLAttributes<HTMLDivElemen
 export const CardTitle = ({ className, ...props }: HTMLAttributes<HTMLHeadingElement>) => (
   <h3 className={cn("text-base font-semibold text-slate-900 dark:text-slate-100", className)} {...props} />
 );
+
+export const CardContent = ({ className, ...props }: HTMLAttributes<HTMLDivElement>) => (
+  <div className={cn("pt-0", className)} {...props} />
+);
