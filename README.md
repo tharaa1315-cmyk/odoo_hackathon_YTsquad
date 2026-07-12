@@ -19,10 +19,10 @@
 
 <br/>
 
-[![Stars](https://img.shields.io/github/stars/USERNAME/SyncFlow?style=social)](https://github.com/tharaa1315-cmyk/odoo_hackathon_YTsquad)
-[![Forks](https://img.shields.io/github/forks/USERNAME/SyncFlow?style=social)](#)
-[![License](https://img.shields.io/badge/license-MIT-informational)](#)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#)
+[![Stars](https://img.shields.io/github/stars/tharaa1315-cmyk/odoo_hackathon_YTsquad?style=social)](https://github.com/tharaa1315-cmyk/odoo_hackathon_YTsquad/stargazers)
+[![Forks](https://img.shields.io/github/forks/tharaa1315-cmyk/odoo_hackathon_YTsquad?style=social)](https://github.com/tharaa1315-cmyk/odoo_hackathon_YTsquad/network/members)
+[![License](https://img.shields.io/badge/license-MIT-informational)](https://github.com/tharaa1315-cmyk/odoo_hackathon_YTsquad/blob/main/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/tharaa1315-cmyk/odoo_hackathon_YTsquad/pulls)
 
 </div>
 
